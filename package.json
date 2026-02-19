@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "start": "npx tsx bakery-cafe-price-dashboard.ts",
-    "predict": "npx tsx bakery-cafe-price-prediction.ts"
+    "predict": "npx tsx bakery-cafe-price-prediction.ts",
+    "validate": "npx tsx validate-prediction-model.ts"
   },
   "devDependencies": {
     "typescript": "^5.9.3",

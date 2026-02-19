@@ -29,6 +29,9 @@ npx tsx bakery-cafe-price-dashboard.ts
 
 # 가격 예측 리포트
 npx tsx bakery-cafe-price-prediction.ts
+
+# 예측 모델 검증 (2025년 실제 데이터 백테스트)
+npx tsx validate-prediction-model.ts
 ```
 
 ## 포함 기능
@@ -49,6 +52,24 @@ npx tsx bakery-cafe-price-prediction.ts
   - 요일별 패턴
 - 종합 매입 신호 (긴급매수/매수적기/보류/대기)
 - 알림 서비스용 JSON 출력 (`--- ALERT_JSON_START/END ---`)
+
+### 모델 검증 (`validate-prediction-model.ts`)
+- 2025년 1~12월 실제 원자재 가격 기반 백테스트
+- 롤링 윈도우 방식: 4개월 학습 → 다음 달 예측 → 실제값 비교
+- 검증 지표: MAPE, 신뢰구간 적중률, 추세 방향 정확도
+- **검증 결과 요약 (전체 MAPE: 4.7%)**
+
+| 원자재 | MAPE | CI 적중률 | 방향 정확도 | 등급 |
+|--------|------|-----------|-------------|------|
+| 우유 | 0.37% | 100% | 75% | Excellent |
+| 아몬드 | 0.43% | 100% | 50% | Excellent |
+| 바닐라 | 0.88% | 87.5% | 50% | Excellent |
+| 설탕 | 4.1% | 75% | 87.5% | Good |
+| 계란 | 4.35% | 50% | 62.5% | Good |
+| 밀 | 5.46% | 62.5% | 75% | Good |
+| 코코아 | 6.3% | 62.5% | 50% | Good |
+| 버터 | 7.9% | 37.5% | 50% | Good |
+| 커피 | 12.7% | 75% | 12.5% | Needs Improvement |
 
 ## 데이터 출처
 
