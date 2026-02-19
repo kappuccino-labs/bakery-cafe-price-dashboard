@@ -24,15 +24,31 @@
 ## 실행 방법
 
 ```bash
+# 가격 대시보드
 npx tsx bakery-cafe-price-dashboard.ts
+
+# 가격 예측 리포트
+npx tsx bakery-cafe-price-prediction.ts
 ```
 
 ## 포함 기능
 
+### 대시보드 (`bakery-cafe-price-dashboard.ts`)
 - 10종 원자재 일별 가격 추이 (국제 선물 + 국내 도매가)
 - 빵집 원가 시뮬레이션 (식빵 1개)
 - 카페 원가 시뮬레이션 (아메리카노 1잔)
 - 사장님을 위한 주간 인사이트
+
+### 예측 리포트 (`bakery-cafe-price-prediction.ts`)
+- 6개 수학 모델을 활용한 가격 예측
+  - 선형회귀 (OLS): `y = ax + b`
+  - 지수이동평균 (EMA): `EMA_t = alpha * P_t + (1-alpha) * EMA_{t-1}`
+  - 가격 외삽 + 95% 신뢰구간
+  - 변동성 분석: `sigma = sqrt(sum((r_i - r_bar)^2) / (N-1))`
+  - RSI 모멘텀: `RSI = 100 - 100/(1 + RS)`
+  - 요일별 패턴
+- 종합 매입 신호 (긴급매수/매수적기/보류/대기)
+- 알림 서비스용 JSON 출력 (`--- ALERT_JSON_START/END ---`)
 
 ## 데이터 출처
 
