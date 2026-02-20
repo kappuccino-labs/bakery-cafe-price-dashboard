@@ -12,7 +12,9 @@
     "sync:prices": "npx tsx sync-prices-to-ec2.ts",
     "sync:trends": "npx tsx sync-trends-to-ec2.ts",
     "sync:all": "npx tsx sync-all-to-ec2.ts",
-    "generate:history": "npx tsx generate-price-history.ts"
+    "generate:history": "npx tsx generate-price-history.ts",
+    "schedule:am": "npx tsx scheduled-sync.ts am",
+    "schedule:pm": "npx tsx scheduled-sync.ts pm"
   },
   "devDependencies": {
     "typescript": "^5.9.3",
